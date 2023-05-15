@@ -3,3 +3,4 @@ function Calcular() {
     var etanol = document.getElementById("etanol").value
     var imagem = document.getElementById("resultadoimg")
     var textoresultado = document.getElementById("resultadotext")
+}
