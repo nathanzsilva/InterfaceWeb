@@ -4,6 +4,10 @@ function Calcular() {
     var imagem = document.getElementById("resultadoimg")
     var textoresultado = document.getElementById("resultadotext")
 
+    if(gasolina == "" || etanol == ""){
+        alert("Preencha os campos")
+        return;
+    }
     if(gasolina * 0.7 < etanol){
         imagem.src = "./img/etanol.jpg"
         textoresultado.innerText = "Etanol vale mais"
