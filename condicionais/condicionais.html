@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Condicionais</title>
+</head>
+
+<body>
+
+    <h1> Trabalho com Condicionais </h1>
+    <p> Em javascript trabalhamos com as condicionais através dos comandos if e else.
+        Vejamos abaixo a estreutura deste código. </p>
+
+    <script>
+        var idade = 18;
+
+        if (idade >= 18) {
+            //Resultado caso seja verdadeiro
+            console.log("maior de idade");
+        }
+        else if (idade == 18) {
+            //Resultado caso seja verdadeiro
+            console.log("idade igual a 18");
+        }
+        else {
+            //Resultado caso seja verdadeiro
+            console.log("menor de idade");
+        }
+    </script>
+
+    <script>
+        //Calcular a média
+        var a = 6
+
+        if ((a > 6) && (a != 6)) {
+            console.log("verdadeiro!");
+        }
+        else {
+            console.log("Não atende a condição")
+        } 
+    </script>
+
+    <script>
+        var nota1;
+        var nota2;
+        var media;
+
+        //entrada de dados
+        nota1 = parseFloat(prompt("Digite a primeira nota"));
+        nota2 = parseFloat(prompt("Digite a segunda nota"));
+
+        //processamento
+        media = (nota1 + nota2) / 2
+
+        //saída de dados
+        document.write("O resultado da média é " + media);
+
+        if (media > 6) {
+            console.log ("aluno aprovado");
+        }
+
+        else{
+            console.log ("aluno reprovado");
+        }
+    </script>
+</body>
+
+</html>
