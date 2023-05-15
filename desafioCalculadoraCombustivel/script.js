@@ -8,7 +8,7 @@ function Calcular() {
         alert("Preencha os campos")
         return;
     }
-    if(gasolina * 0.7 < etanol){
+    if(gasolina * 0.7 > etanol){
         imagem.src = "./img/etanol.jpg"
         textoresultado.innerText = "Etanol vale mais"
     }
