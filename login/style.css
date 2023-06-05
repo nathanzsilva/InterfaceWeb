@@ -1,0 +1,46 @@
+body {
+    width: 700px;
+    margin: auto;
+}
+
+input {
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid gray;
+    font-size: 15px;
+    padding: 7px 0;
+    background: transparent;
+    margin-bottom: 12px;
+}
+
+label {
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+button {
+    background-color: blue;
+    border-radius: 6px;
+    border-width: 0;
+    color: white;
+    cursor: pointer;
+    height: 44px;
+    margin: 12px 0 0 0;
+    padding: 0 25px;
+    width: 100%;
+}
+
+table{
+    width: 100%;
+    border: 1px solid gray;
+
+}
+
+th, td {
+    padding: 10px;
+}
+
+.table-row {
+    background-color: white;
+    box-shadow: 0px 0px 9px 9px rgb(0, 0, 0, 0.1);
+}
