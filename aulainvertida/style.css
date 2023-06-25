@@ -80,14 +80,16 @@ header ul li img {
 
 footer {
     height: 15vh;
-    background-color: #e13b3b;
+    background-color: #d9d9d97d;
     width: 100%;
 }
 
 .container {
     margin-top: 14vh;
 }
-
+.jcse{
+    justify-content: space-evenly;
+}
 .flex {
     display: flex;
     width: 100%;
@@ -174,6 +176,12 @@ footer {
 
 
 }
+.pagamento{
+    width: 30%;
+}
+.jcc {
+    justify-content: center;
+}
 
 .filtrocidade {
     display: none;
@@ -190,7 +198,8 @@ footer {
     gap: 2vh;
     font-weight: 600;
 }
-.filtrocidade input{
+
+.filtrocidade input {
     height: 45px;
     width: 100%;
     border-radius: 60px;
@@ -567,6 +576,15 @@ footer {
     padding: 2vw;
 }
 
+.padH {
+    padding: 2vw 0 ;
+}
+.tar{
+    text-align: right;
+}
+.underline{
+    text-decoration: underline;
+}
 .gapmenor {
     gap: 1vw;
 }
@@ -611,13 +629,25 @@ footer {
 .setavoltar {
     position: absolute;
     left: 7vw;
+    top: 18vh;
     cursor: pointer;
+    width: 2vw;
 }
 
 .borderradius {
     border-radius: 40px;
 }
 
+@media screen and (max-width: 977px) {
+    .mediaquery4{
+        flex-direction: column;
+        align-items: center;
+    }
+    .mediaquery5{
+        width: 100%;
+        padding: 3vh;
+    }
+}
 @media screen and (max-width: 681px) {
     .mediaquery2 {
         flex-direction: column;

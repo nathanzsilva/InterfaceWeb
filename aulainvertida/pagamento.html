@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <script src="./script.js"></script>
+</head>
+
+<body>
+
+
+
+
+    <div class="espaco" id="espaco">
+        <header id="navbar">
+            <ul>
+                <li><img src="img/logo.png" alt="" class="logo" onclick="IrParaHome()"></li>
+                <li class="relative search"><input type="text"><img src="./img/lupa.png" class="lupa" alt=""></li>
+                <li class="perfil"><img class="setanav" src="./img/seta.png" alt=""><img src="./img/perfil.png"
+                        width="70"></li>
+            </ul>
+            <hr>
+
+        </header>
+    </div>
+
+    <div class="container2">
+        <img src="./img/seta2.png" class="setavoltar" onclick="IrParaDetalhes()" alt="">
+
+
+        <h1 class="margin">Reserva</h1>
+
+        <div class="row column aic margin gapmenor">
+            <h2>Você já está na sua conta!</h2>
+            <p>Revise as informações de sua estadia</p>
+        </div>
+        <div class="row margin mediaquery4">
+            <div class="col9 pad">
+                <div class="row column gap">
+                    <h2>Sua estadia</h2>
+                    <div class="row column gapmenor">
+                        <h3>Datas</h3>
+                        <div class="row jcsb">
+                            <p>11 - 21 de junho</p>
+                            <h4 class="underline tar">Editar</h4>
+                        </div>
+                    </div>
+                    <div class="row column gapmenor">
+                        <h3>Hóspedes </h3>
+                        <div class="row jcsb">
+                            <p>2 Hóspedes</p>
+                            <h4 class="underline tar">Editar</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col3 borderradius pad mediaquery5">
+                <div class="row gap">
+                    <img src="./img/img1.png" class="pagamento">
+                    <div class="row column gapmenor">
+                        <h3>Casa pé na areia</h3>
+                        <h3 class="spanpequeno">R$650 <span>noite</span></h3>
+                        <div class="flexzin gap aic jce fww">
+                            <p class="flexzin aic"><img src="./img/estrela.png" alt=""> 4,8</p>
+                            <p>30 comentários</p>
+                        </div>
+                    </div>
+                </div>
+                <hr class="margin">
+                <div>
+                    <h3>Informações </h3>
+                    <div class="row jcsb">
+                        <div class="row column gapmenor padH">
+                            <p>R$650,00 x 11 noites</p>
+                            <p>Taxa de Limpeza</p>
+                        </div>
+                        <div class="row column gapmenor padH">
+                            <p class="tar">R$0.000,00</p>
+                            <p class="tar">R$240,00</p>
+                        </div>
+                    </div>
+                </div>
+                <hr class="margin">
+                <div class="row column gap">
+                    <div class="row jcsb">
+                        <h3>Total</h3>
+                        <h4>R$0.000,00</h4>
+                    </div>
+                    <div class="row jcsb">
+                        <h4>Parcelamento</h4>
+                        <h5 class="underline">Selecionar</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row column gap margin">
+            <h2>Política de Cancelamento</h2>
+
+            <h4>Cancelamento gratuito por 48 horas. <span class="underline">Saiba Mais</span> </h4>
+        </div>
+        <br>
+        <br>
+        <div class="row column aic margin gap">
+            <h5>Ao clicar no botão abaixo, concordo com os Termos de politica de privacidade de dados e o Termo de Pagamento e Reembolso.</h5>
+            <button class="butaoform" style="margin-top: 0;">Pedir para Reservar</button>
+        </div>
+    </div>
+
+    <footer class="row jcse pad aic">
+        <h4>2023 Cosiness, Inc</h4>
+        <h4>Privacidade</h4>
+        <h4>Termos de Uso </h4>
+        <h4>Informações da Empresa</h4>
+    </footer>
+</body>
+<script>
+
+    document.getElementById("navbar").style.visibility = 'visible'
+    document.getElementById("navbar").style.position = 'fixed'
+    document.getElementById("navbar").style.animation = 'none'
+    document.getElementById("navbar").style.animation = 'moveToDown 700ms ease-out'
+    console.log("aaaaa")
+
+</script>
+
+</html>

@@ -159,4 +159,9 @@ function Trocarlogin() {
 function IrParaHome() {
   window.location.href = './index.html'
 }
-
+function Irparapagamento(){
+  window.location.href = './pagamento.html'
+}
+function IrParaDetalhes(){
+  window.location.href = './casa.html'
+}
