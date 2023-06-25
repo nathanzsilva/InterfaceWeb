@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+
+    <div class="flex" id="cadastro">
+        <div class="containerhome">
+            <img src="img/logo.png" alt="" class="logo1">
+            <div class="centro">
+                <div>
+                    <h1>Encontre os <br> melhores lugares<br> para se <span>aconchegar</span></h1>
+
+                    <button onclick="ModalCadastro()">Cadastre-se</button>
+                </div>
+            </div>
+
+        </div>
+        <div class="imgside">
+            <div class="degradeL"></div>
+            <div class="degradeB"></div>
+        </div>
+    </div>
+
+    <div id="fundoCadastro"></div>
+
+    <div id="modalCadastro">
+        <div class="logincad">
+            <h1>Cadastro</h1>
+            <p>Bem-vindo!</p>
+            <h1>Encontre o <br> seu melhor<br><span>aconchego</span></h1>
+
+        </div>
+        <div class="formcadlog">
+            <img src="img/logo.png" alt="">
+
+            <div class="formlogin">
+                <div class="relativeform">
+                    <input type="text" name="" id="formemail" placeholder="Digite seu E-mail">
+                    <img src="./img/pessoaform.png" alt="" class="pessoalabel">
+
+                </div>
+
+                <div class="relativeform">
+                    <input type="password" name="" id="formsenha" placeholder="Digite sua nova senha">
+                    <img src="./img/cadeadoform.png" alt="" class="pessoalabel">
+                </div>
+                <div class="relativeform">
+                    <input type="password" name="" id="formsenha" placeholder="Digite sua senha novamente">
+                    <img src="./img/cadeadoform.png" alt="" class="pessoalabel">
+                </div>
+
+                <div class="checkform">
+                    <label class="chk">
+                        <input type="checkbox" name="exemplo" />
+                        <span></span>
+                    </label>
+                    <label for="">Concordo com os termos e usos</label>
+                </div>
+
+
+                <button class="butaoform">
+                    Cadastrar
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="modalLogin">
+        <div class="logincad">
+            <h1>Login</h1>
+            <p>Bem-vindo de volta!</p>
+            <h1>Encontre o <br> seu melhor<br><span>aconchego</span></h1>
+
+        </div>
+        <div class="formcadlog">
+            <img src="img/logo.png" alt="">
+
+            <div class="formlogin">
+                <div class="relativeform">
+                    <input type="text" name="" id="formemail" placeholder="Digite seu E-mail">
+                    <img src="./img/pessoaform.png" alt="" class="pessoalabel">
+
+                </div>
+
+                <div class="relativeform">
+                    <input type="password" name="" id="formsenha">
+                    <img src="./img/cadeadoform.png" alt="" class="pessoalabel">
+                </div>
+                <p>Esqueceu a senha?</p>
+
+                <button class="butaoform">
+                    Entrar
+                </button>
+            </div>
+        </div>
+    </div>
+    <img src="./img/trocar.png" alt="" onclick="Trocarlogin()" class="trocar" id="trocar">
+
+    <div class="espaco" id="espaco">
+        <header id="navbar">
+            <ul>
+                <li><img src="img/logo.png" alt="" class="logo"></li>
+                <li class="relative search"><input type="text" id="search" onchange="pesquisar(this)"><img src="./img/lupa.png" class="lupa"
+                        alt=""></li>
+                <li class="perfil"><img class="setanav" src="./img/seta.png" alt=""><img src="./img/perfil.png"
+                        width="70"></li>
+            </ul>
+            <hr>
+
+        </header>
+    </div>
+    <div class="container">
+        <div class="filtros">
+
+
+            <div class="filtro1">
+                <div onclick="abrirfiltro1()" onpointerout="fecharfiltro1()">
+                    <p>Onde</p>
+                    <div class="filtrocidade" id="filtrocidade">
+                        <label for="">Qual cidade deseja para sua estadia? </label>
+                        <input type="text" name="" id="" onchange="pesquisar(this)">
+                    </div>
+                </div>
+                <span>|</span>
+                <div>
+                    <p>Quando</p>
+                </div>
+                <span>|</span>
+                <div>
+                    <p>Pessoas</p>
+                </div>
+
+            </div>
+            <div class="filtro2">
+                <img src="./img/iconfiltro.png" alt="">
+                <div>
+                    <p>Filtros</p>
+                </div>
+            </div>
+        </div>
+
+        <h2>Qual vai ser o rolê?</h2>
+
+        <div class="locais" id="locais"> </div>
+
+    </div>
+    <footer>
+
+    </footer>
+    <script src="./script.js"></script>
+    <script>
+        function verCasa(batata) {
+            var img = batata.querySelector("img").src
+            var titulo = batata.querySelector("h3").innerText
+            var texto = batata.querySelector("p").innerText
+
+            var data = {
+                img: img,
+                titulo: titulo,
+                texto: texto
+            }
+
+            window.localStorage.setItem("casa", JSON.stringify(data))
+
+            window.location.href = './casa.html'
+        }
+    </script>
+</body>
+
+</html>
