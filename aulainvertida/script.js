@@ -243,7 +243,7 @@ function data2(request) {
     }
   }
 }
-function fecharCheckn() {
+function fecharCheckin() {
   var calendario = document.getElementById("checkin")
   calendario.style.display = 'none'
 }
