@@ -87,9 +87,11 @@ footer {
 .container {
     margin-top: 14vh;
 }
-.jcse{
+
+.jcse {
     justify-content: space-evenly;
 }
+
 .flex {
     display: flex;
     width: 100%;
@@ -176,9 +178,13 @@ footer {
 
 
 }
-.pagamento{
+
+.pagamento {
     width: 30%;
+    object-fit: cover;
+    border-radius: 15px;
 }
+
 .jcc {
     justify-content: center;
 }
@@ -296,6 +302,8 @@ footer {
 
 .imagens img {
     width: 55%;
+    border-radius: 20px;
+
     /* margin: 1vh; */
 }
 
@@ -307,6 +315,8 @@ footer {
 .imgimagens img {
     object-fit: fill;
     width: 99%;
+    border-radius: 20px;
+
     /* margin: 1vh; */
 
 }
@@ -371,13 +381,86 @@ footer {
     right: 0;
 }
 
+#checkin {
+    display: none;
+    width: 100%;
+    height: 25vh;
+    flex-direction: column;
+}
+
+
+
+#checkin ul {
+    display: grid;
+    grid-template-columns: 14.2% 14.2% 14.2% 14.2% 14.2% 14.2% 14.2%;
+    gap: 20px;
+    justify-content: space-between;
+
+    gap: 5px;
+    list-style: none;
+}
+
+#checkin2 {
+    display: none;
+    width: 100%;
+    height: 25vh;
+    flex-direction: column;
+}
+
+
+
+#checkin2 ul {
+    display: grid;
+    grid-template-columns: 14.2% 14.2% 14.2% 14.2% 14.2% 14.2% 14.2%;
+    gap: 20px;
+    justify-content: space-between;
+
+    gap: 5px;
+    list-style: none;
+}
+
+#checkin3 img {
+    width: 3vw;
+}
+
+#checkin3 div {
+    display: flex;
+    align-items: center;
+}
+
+#checkin3 {
+    display: none;
+    width: 100%;
+    height: 12vh;
+    flex-direction: column;
+}
+
+#checkin5 {
+    display: none;
+    padding: 2vh;
+}
+
+.radio:before {
+    background-color: #E13B3B;
+}
+
+#checkin3 ul {
+    display: grid;
+    grid-template-columns: 14.2% 14.2% 14.2% 14.2% 14.2% 14.2% 14.2%;
+    gap: 20px;
+    justify-content: space-between;
+
+    gap: 5px;
+    list-style: none;
+}
+
 #modalCadastro {
 
     display: none;
     border-radius: 60px;
     position: fixed;
     background: white;
-    height: 80vh;
+    height: 90vh;
     width: 80vw;
     top: 0;
     bottom: 0;
@@ -391,7 +474,7 @@ footer {
     border-radius: 60px;
     position: fixed;
     background: white;
-    height: 80vh;
+    height: 90vh;
     width: 80vw;
     top: 0;
     bottom: 0;
@@ -415,7 +498,7 @@ footer {
 
 .logincad p {
     position: relative;
-    bottom: 30%;
+    bottom: 0;
     font-weight: 500;
     font-size: x-large;
 
@@ -457,6 +540,25 @@ footer {
     height: 19px;
     background-image: url("./img/check.png");
     background-repeat: no-repeat;
+    background-size: contain;
+    border: none;
+}
+
+.radk input {
+    display: none;
+}
+
+.radk span {
+    height: 2vh;
+    width: 2vh;
+    border: 1px solid black;
+    border-radius: 100%;
+    display: block;
+    background-color: #fff;
+}
+
+.radk input:checked+span {
+    background-color: #E13B3B;
     background-size: contain;
     border: none;
 }
@@ -577,14 +679,17 @@ footer {
 }
 
 .padH {
-    padding: 2vw 0 ;
+    padding: 2vw 0;
 }
-.tar{
+
+.tar {
     text-align: right;
 }
-.underline{
+
+.underline {
     text-decoration: underline;
 }
+
 .gapmenor {
     gap: 1vw;
 }
@@ -606,6 +711,7 @@ footer {
     height: 8vh;
     width: 8vh;
     border-radius: 100%;
+    object-fit: cover;
 }
 
 .divdefazerporcentagem {
@@ -639,15 +745,17 @@ footer {
 }
 
 @media screen and (max-width: 977px) {
-    .mediaquery4{
+    .mediaquery4 {
         flex-direction: column;
         align-items: center;
     }
-    .mediaquery5{
+
+    .mediaquery5 {
         width: 100%;
         padding: 3vh;
     }
 }
+
 @media screen and (max-width: 681px) {
     .mediaquery2 {
         flex-direction: column;
@@ -753,5 +861,4 @@ footer {
     .containerhome img {
         width: 200px;
     }
-
 }

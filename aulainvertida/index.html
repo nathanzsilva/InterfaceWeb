@@ -4,9 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+    <title>Cosiness</title>
+    <link rel="shortcut icon" href="img/logonav.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -46,7 +48,6 @@
                 <div class="relativeform">
                     <input type="text" name="" id="formemail" placeholder="Digite seu E-mail">
                     <img src="./img/pessoaform.png" alt="" class="pessoalabel">
-
                 </div>
 
                 <div class="relativeform">
@@ -67,7 +68,7 @@
                 </div>
 
 
-                <button class="butaoform">
+                <button class="butaoform " style="margin-top: 0;">
                     Cadastrar
                 </button>
             </div>
@@ -92,7 +93,7 @@
 
                 <div class="relativeform">
                     <input type="password" name="" id="formsenha">
-                    <img src="./img/cadeadoform.png" alt="" class="pessoalabel">
+                    <img src="./img/cadeadoform.png" alt="" class="pessoalabel" placeholder="Digite sua senha">
                 </div>
                 <p>Esqueceu a senha?</p>
 
@@ -122,7 +123,7 @@
 
 
             <div class="filtro1">
-                <div onclick="abrirfiltro1()" onpointerout="fecharfiltro1()">
+                <div onclick="abrirfiltro1()" onmouseleave="fecharfiltro1()">
                     <p>Onde</p>
                     <div class="filtrocidade" id="filtrocidade">
                         <label for="">Qual cidade deseja para sua estadia? </label>

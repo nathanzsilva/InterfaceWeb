@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+    <title>Pagamento - Cosiness</title>
+    <link rel="shortcut icon" href="img/logonav.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <script src="./script.js"></script>
 </head>
@@ -45,15 +45,15 @@
                     <div class="row column gapmenor">
                         <h3>Datas</h3>
                         <div class="row jcsb">
-                            <p>11 - 21 de junho</p>
-                            <h4 class="underline tar">Editar</h4>
+                            <p id="datas">11 - 21 de junho</p>
+                            <h4 class="underline tar" onclick="EditarInformacoes()">Editar</h4>
                         </div>
                     </div>
                     <div class="row column gapmenor">
                         <h3>Hóspedes </h3>
                         <div class="row jcsb">
-                            <p>2 Hóspedes</p>
-                            <h4 class="underline tar">Editar</h4>
+                            <p id="hospedes">2 Hóspedes</p>
+                            <h4 class="underline tar" onclick="EditarInformacoes()">Editar</h4>
                         </div>
                     </div>
                 </div>
@@ -74,25 +74,91 @@
                 <div>
                     <h3>Informações </h3>
                     <div class="row jcsb">
-                        <div class="row column gapmenor padH">
-                            <p>R$650,00 x 11 noites</p>
+                        <div class="row column gapmenor jcsb padH">
+                            <p id="noites">R$650,00 x 11 noites</p>
                             <p>Taxa de Limpeza</p>
                         </div>
-                        <div class="row column gapmenor padH">
-                            <p class="tar">R$0.000,00</p>
-                            <p class="tar">R$240,00</p>
+                        <div class="row column gapmenor jcsb padH">
+                            <p class="tar" id="noitespreco">R$0.000,00</p>
+                            <p class="tar" id="limpeza">R$240,00</p>
                         </div>
                     </div>
                 </div>
                 <hr class="margin">
-                <div class="row column gap">
+                <div class="row column gap" onmouseleave="fecharCheckin5()">
                     <div class="row jcsb">
                         <h3>Total</h3>
-                        <h4>R$0.000,00</h4>
+                        <h4 id="total">R$0.000,00</h4>
                     </div>
                     <div class="row jcsb">
                         <h4>Parcelamento</h4>
-                        <h5 class="underline">Selecionar</h5>
+                        <h5 class="underline" onclick="abrirparcelas()">Selecionar</h5>
+
+
+
+                    </div>
+
+                    <div id="checkin5" class="column gapmenor" onclick="validarparcela()">
+                        <div class="row jcsb aic">
+                            <div>
+                                <h4 id="parcela1">1x R$0.000,00</h4>
+                                <p>Sem juros</p>
+                            </div>
+                            <label class="radk">
+                                <input type="radio" name="radio23" value="1" />
+                                <span></span>
+                            </label>
+                        </div>
+                        <div class="row jcsb aic">
+                            <div>
+                                <h4 id="parcela2">2x R$0.000,00</h4>
+                                <p>Sem juros</p>
+                            </div>
+                            <label class="radk">
+                                <input type="radio" name="radio23" value="2" />
+                                <span></span>
+                            </label>
+                        </div>
+                        <div class="row jcsb aic">
+                            <div>
+                                <h4 id="parcela3">3x R$0.000,00</h4>
+                                <p>Sem juros</p>
+                            </div>
+                            <label class="radk">
+                                <input type="radio" name="radio23" value="3" />
+                                <span></span>
+                            </label>
+                        </div>
+                        <div class="row jcsb aic">
+                            <div>
+                                <h4 id="parcela4">4x R$0.000,00</h4>
+                                <p>Com juros</p>
+                            </div>
+                            <label class="radk">
+                                <input type="radio" name="radio23" value="4" />
+                                <span></span>
+                            </label>
+                        </div>
+                        <div class="row jcsb aic">
+                            <div>
+                                <h4 id="parcela5">5x R$0.000,00</h4>
+                                <p>Com juros</p>
+                            </div>
+                            <label class="radk">
+                                <input type="radio" name="radio23" value="5" />
+                                <span></span>
+                            </label>
+                        </div>
+                        <div class="row jcsb aic">
+                            <div>
+                                <h4 id="parcela6">6x R$0.000,00</h4>
+                                <p>Com juros</p>
+                            </div>
+                            <label class="radk">
+                                <input type="radio" name="radio23" value="6" />
+                                <span></span>
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -105,8 +171,9 @@
         <br>
         <br>
         <div class="row column aic margin gap">
-            <h5>Ao clicar no botão abaixo, concordo com os Termos de politica de privacidade de dados e o Termo de Pagamento e Reembolso.</h5>
-            <button class="butaoform" style="margin-top: 0;">Pedir para Reservar</button>
+            <h5>Ao clicar no botão abaixo, concordo com os Termos de politica de privacidade de dados e o Termo de
+                Pagamento e Reembolso.</h5>
+            <button class="butaoform" style="margin-top: 0;" onclick="Alertar('Local reservado com sucesso')">Pedir para Reservar</button>
         </div>
     </div>
 
@@ -124,6 +191,33 @@
     document.getElementById("navbar").style.animation = 'none'
     document.getElementById("navbar").style.animation = 'moveToDown 700ms ease-out'
     console.log("aaaaa")
+
+
+    // let pagamentojson = {
+    //   datain: datain,
+    //   dataout: dataout,
+    //   total: total,
+    //   hospedes: hospedes
+    // }
+    var pagamento = JSON.parse(window.localStorage.getItem("pagamento"))
+
+    document.getElementById("datas").innerText = `${pagamento.datain.split("/")[0]} - ${pagamento.dataout.split("/")[0]} de junho`
+
+    document.getElementById("hospedes").innerText = `${pagamento.hospedes} Hóspedes`
+
+    document.getElementById("noites").innerText = `R$650,00 x ${pagamento.dataout.split("/")[0] - pagamento.datain.split("/")[0]} noites`
+    document.getElementById("noitespreco").innerText = `${((pagamento.dataout.split("/")[0] - pagamento.datain.split("/")[0]) * 650).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}`
+
+    document.getElementById("limpeza").innerText = `${(pagamento.limpeza).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}`
+
+    document.getElementById("total").innerText = `${pagamento.total.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}`
+
+    document.getElementById("parcela1").innerText = `1x ${pagamento.total.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}`
+    document.getElementById("parcela2").innerText = `2x $${(pagamento.total / 2).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}`
+    document.getElementById("parcela3").innerText = `3x ${(pagamento.total / 3).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}`
+    document.getElementById("parcela4").innerText = `4x ${(pagamento.total * 1.2 / 4).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}`
+    document.getElementById("parcela5").innerText = `5x ${(pagamento.total * 1.2 / 5).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}`
+    document.getElementById("parcela6").innerText = `6x ${(pagamento.total * 1.2 / 6).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}`
 
 </script>
 

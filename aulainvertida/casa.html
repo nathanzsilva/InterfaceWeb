@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+    <title>Casas - Cosiness</title>
+    <link rel="shortcut icon" href="img/logonav.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <script src="./script.js"></script>
+
 </head>
 
 <body>
@@ -38,16 +39,16 @@
             <p>Ubatuba, São Paulo, Brasil</p>
         </div>
         <div class="imagens">
-            <img src="./img/img1.png" alt="">
+            <img src="./img/detalhe.jpg" alt="">
             <div>
                 <div class="row imgimagens">
-                    <img src="./img/img1.png" alt="">
-                    <img src="./img/img1.png" alt="">
+                    <img src="./img/detalhe1.jpg" alt="">
+                    <img src="./img/detalhe2.jpg" alt="">
                 </div>
 
                 <div class="row imgimagens">
-                    <img src="./img/img1.png" alt="">
-                    <img src="./img/img1.png" alt="">
+                    <img src="./img/detalhe3.jpg" alt="">
+                    <img src="./img/detalhe4.jpg" alt="">
                 </div>
 
             </div>
@@ -96,30 +97,50 @@
                     </div>
                 </div>
                 <div class="row gapmenor jcsb fwwmanual aic">
-                    <div class="caixinhacinza mediaquery100">
+                    <div class="caixinhacinza mediaquery100 relative" onclick="CriarCalendario()"
+                        onmouseleave="fecharCheckin()">
                         <h5>Check-In</h5>
-                        <p id="resultadocheckin">11/06/2023</p>
+                        <p id="resultadocheckin"></p>
+                        <div id="checkin">
+
+                        </div>
                     </div>
-                    <div class="caixinhacinza mediaquery100">
+                    <div class="caixinhacinza mediaquery100" onclick="CriarCalendario2()"
+                    onmouseleave="fecharCheckin2()">
                         <h5>Checkout</h5>
-                        <p id="resultadocheckout">11/06/2023</p>
+                        <p id="resultadocheckout"></p>
+                        <div id="checkin2">
+                            
+                        </div>
                     </div>
                 </div>
 
-                <div class="row caixinhacinza jcsb aic seta coverfundo">
+                <div class="row caixinhacinza jcsb aic seta coverfundo" onclick="AbrirHospedes()"
+                onmouseleave="fecharCheckin3()">
                     <div>
                         <h5>Hóspedes</h5>
-                        <p id="resultadohospedes">2 hóspedes</p>
+                        <p id="resultadohospedes">1 hóspedes</p>
+                        <div id="checkin3">
+                            
+                                <h6>Adultos</h6>
+                                <p>Com 13 anos ou mais</p>
+                            
+                            <div class="flexzin">
+                                <img src="./img/mais.png" alt="" onclick="somarhospedes()">
+                                <h5 id="hospedes">1</h5>
+                                <img src="./img/menos.png" alt="" onclick="menarhospedes()">
+                            </div>
+                        </div>
                     </div>
                     <img src="./img/seta.png">
                 </div>
                 <div class="row jcsb mt gap">
                     <p>Taxa de Limpeza</p>
-                    <h4>R$240,00</h4>
+                    <h4 id="taxalimp">R$240,00</h4>
                 </div>
                 <div class="row jcsb gap ">
                     <p>Total</p>
-                    <h4>R$240,00</h4>
+                    <h4 id="resultado">R$240,00</h4>
                 </div>
                 <div class="row jcc">
                     <button class="butaoform" onclick="Irparapagamento()">
@@ -200,7 +221,7 @@
             <div class="row gap">
                 <div class="row column gap margin">
                     <div class="row gapmenor aic">
-                        <img src="./img/casa.jpg" class="fotoperfil" alt="">
+                        <img src="./img/sergio.jpeg" class="fotoperfil" alt="">
                         <div class="flexzin column">
                             <h4>Sérgio</h4>
                             <p>Maio 2023</p>
@@ -210,9 +231,9 @@
                 </div>
                 <div class="row column gap margin">
                     <div class="row gapmenor aic">
-                        <img src="./img/casa.jpg" class="fotoperfil" alt="">
+                        <img src="./img/perterson.jpeg" class="fotoperfil" alt="">
                         <div class="flexzin column">
-                            <h4>Sérgio</h4>
+                            <h4>Peterson</h4>
                             <p>Maio 2023</p>
                         </div>
                     </div>
@@ -237,7 +258,6 @@
     document.getElementById("navbar").style.animation = 'none'
     document.getElementById("navbar").style.animation = 'moveToDown 700ms ease-out'
     console.log("aaaaa")
-
 </script>
 
 </html>
