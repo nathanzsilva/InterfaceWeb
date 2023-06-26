@@ -386,6 +386,7 @@ footer {
     width: 100%;
     height: 25vh;
     flex-direction: column;
+    cursor: pointer;
 }
 
 
@@ -405,9 +406,12 @@ footer {
     width: 100%;
     height: 25vh;
     flex-direction: column;
+    cursor: pointer
 }
 
-
+.red {
+    color: red;
+}
 
 #checkin2 ul {
     display: grid;

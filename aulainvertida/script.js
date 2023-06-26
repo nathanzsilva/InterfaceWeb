@@ -25,6 +25,17 @@ window.onscroll = () => {
     })
   }
 }
+
+// var lista = [100, 200, 600]
+
+// lista.push(300)
+// var soma = 0
+// for (var i = 0; i < lista.length; i++){
+//   soma += lista[i]
+// }
+
+
+
 var casasJson = [
   {
     onClick: "verCasa(this)",
@@ -187,7 +198,14 @@ function IrParaDetalhes() {
   window.location.href = './casa.html'
 }
 
+function mudarcor(id){
+  document.getElementById(id).style.color = 'red'
+}
+
 function data(request) {
+  let id = "calendario1_" + request.innerText
+  console.log(id)
+
   document.getElementById("resultadocheckin").innerText = `${request.innerText}/06/2023`
   if (document.getElementById("resultadocheckout").innerText != '') {
     let datain = Number(document.getElementById("resultadocheckin").innerText.split("/")[0])
@@ -200,10 +218,14 @@ function data(request) {
       let dias = dataout - datain
       let limpeza = document.getElementById("taxalimp").innerText.replace("R$", '').replace(",00", "")
       document.getElementById("resultado").innerText = `R$${dias * 650 + Number(limpeza)},00`
+      mudarcor(id)
+      document.getElementById(id).classList.add = 'red'
+
     }
   }
 }
 function data2(request) {
+  
   document.getElementById("resultadocheckout").innerText = `${request.innerText}/06/2023`
 
   if (document.getElementById("resultadocheckin").innerText != '') {
@@ -216,13 +238,12 @@ function data2(request) {
     else {
       let dias = dataout - datain
       let limpeza = document.getElementById("taxalimp").innerText.replace("R$", '').replace(",00", "")
+      request.style.color = 'red';
       document.getElementById("resultado").innerText = `R$${dias * 650 + Number(limpeza)},00`
     }
   }
-
-
 }
-function fecharCheckin() {
+function fecharCheckn() {
   var calendario = document.getElementById("checkin")
   calendario.style.display = 'none'
 }
@@ -231,7 +252,7 @@ function CriarCalendario() {
   var calendariotext = ''
   var calendariotext2 = ''
   for (let i = 1; i <= 31; i++) {
-    calendariotext += `<li onclick='data(this)'>${i}</li>`
+    calendariotext += `<li onclick='data(this)' id="calendario1_${i}">${i}</li>`
     // if (i % 7 == 0) {
     //   calendariotext2 += `<ul>${calendariotext}</ul>`
     //   calendariotext = ''
@@ -250,7 +271,7 @@ function CriarCalendario2() {
   var calendariotext = ''
   var calendariotext2 = ''
   for (let i = 1; i <= 31; i++) {
-    calendariotext += `<li onclick='data2(this)'>${i}</li>`
+    calendariotext += `<li onclick='data2(this)' id='calendario2_${i}'>${i}</li>`
     // if (i % 7 == 0) {
     //   calendariotext2 += `<ul>${calendariotext}</ul>`
     //   calendariotext = ''
@@ -311,10 +332,10 @@ function validarparcela() {
   document.getElementById("total").innerText = `${radioSelecionado}x ${(total / radioSelecionado).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}`
 
 }
-function EditarInformacoes(){
+function EditarInformacoes() {
   window.location.href = "./casa.html"
 }
-function Alertar(texto){
+function Alertar(texto) {
   alert(texto)
 }
 
