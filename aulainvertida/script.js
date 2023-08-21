@@ -1,4 +1,3 @@
-
 window.onscroll = () => {
   if (document.documentElement.scrollTop > window.innerHeight) {
     console.log(window.innerHeight)
@@ -338,4 +337,3 @@ function EditarInformacoes() {
 function Alertar(texto) {
   alert(texto)
 }
-
