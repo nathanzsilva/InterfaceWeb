@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EX 5</title>
+</head>
+<body>
+    <form onsubmit="add(event)">
+        <p>aperte enter para adicionar a nota</p>
+        <input type="number" id="input">
+    </form>
+    
+    <button onclick="calcular()">Calcular</button>
+    <script>
+        let array = []
+        function add(event){
+            event.preventDefault()
+            array.push(document.getElementById("input").value)
+            document.getElementById("input").value = ''
+            console.log(array)
+        }
+        function calcular(){
+            let total = 0; 
+            array.forEach((element) => {
+                total += Number(element)
+            });
+            alert(total / array.length)
+        }
+    </script>
+</body>
+</html>
