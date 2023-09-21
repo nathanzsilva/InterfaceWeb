@@ -1,0 +1,54 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  background-color: #282c34;
+}
+.jcc{
+  justify-content: center;
+}
+.aic{
+  align-items: center;
+}
+.margin10 {
+  margin: 10px;
+}
+
+.pad10 {
+  padding: 10px;
+}
+
+.gap15 {
+  gap: 15px;
+}
+
+.flex {
+  display: flex;
+}
+
+.row {
+  flex-direction: row;
+}
+
+.collumn {
+  flex-direction: column;
+}
+
+.App {
+  text-align: center;
+  width: 100%;
+}
+
+.container {
+  max-height: 100vh;
+  overflow-y: auto;
+  width: 70%;
+}
