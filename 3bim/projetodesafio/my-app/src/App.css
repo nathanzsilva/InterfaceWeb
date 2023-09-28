@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: white;
 }
 
 a {
@@ -10,14 +9,17 @@ a {
 }
 
 body {
-  background-color: #282c34;
+  background-color: #f0f0f0; 
 }
-.jcc{
+
+.jcc {
   justify-content: center;
 }
-.aic{
+
+.aic {
   align-items: center;
 }
+
 .margin10 {
   margin: 10px;
 }
@@ -47,8 +49,4 @@ body {
   width: 100%;
 }
 
-.container {
-  max-height: 100vh;
-  overflow-y: auto;
-  width: 70%;
-}
+

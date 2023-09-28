@@ -1,13 +1,15 @@
 import {Routes, Route} from 'react-router-dom'
 
 import Home from '../paginas/home'
-import { Detalhes } from '../paginas/detalhes';
+import { Quiz } from '../paginas/quiz';
+import Ranking from '../paginas/ranking';
 
 function RoutesApp() {
     return (
         <Routes>
             <Route path="*" element={<Home />} />                        
-            <Route path="post/:id" element={<Detalhes />} />                        
+            <Route path="quiz" element={<Quiz />} />                        
+            <Route path="ranking" element={<Ranking />} />                        
         </Routes >
     )
 }
