@@ -9,10 +9,11 @@ const Ranking = () => {
 
     useEffect(() => {
         // Suponha que você tenha armazenado a lista de pontuações no localStorage com a chave "pontuacoes"
-        const pontuacoesLocalStorage = JSON.parse(localStorage.getItem("pontuacoes")) || [];
+        const pontuacoesLocalStorage = JSON.parse(localStorage.getItem("ranking")) || [];
         setPontuacoes(pontuacoesLocalStorage);
     }, []);
 
+   
     return (
         <>
             <NavBar />
@@ -30,10 +31,10 @@ const Ranking = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {pontuacoes.map((pontuacao, index) => (
+                        {pontuacoes.sort((a, b) => b.points - a.points).map((pontuacao, index) => (
                             <tr key={index}>
-                                <td className="user-name">{pontuacao.usuario}</td>
-                                <td className="user-score">{pontuacao.pontuacao}</td>
+                                <td className="user-name">{pontuacao.name}</td>
+                                <td className="user-score">{pontuacao.points}</td>
                             </tr>
                         ))}
                     </tbody>

@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from "react";
 import api from "../../services/api";
-import { Link, useParams } from "react-router-dom";
+import { Link, json, useNavigate, useParams } from "react-router-dom";
 import { NavBar } from "../../componentes/navbar";
 import { BsFillArrowLeftCircleFill } from "react-icons/bs";
 import { toast } from 'react-toastify';
 import './quiz.css'
 export const Quiz = () => {
+    const [userName, setUserName] = useState("");
     const [questions, setQuestions] = useState([]);
-    const [rightQuestions, setrightQuestions] = useState(0);
+    const [rightQuestions, setRightQuestions] = useState(0);
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [selectedOption, setSelectedOption] = useState(null);
+    const [quizStarted, setQuizStarted] = useState(false);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
 
@@ -85,26 +89,43 @@ export const Quiz = () => {
     const handleNextQuestion = () => {
         toast.dismiss();
 
-        const currentQues = questions[currentQuestion];
-        if (selectedOption === currentQues.correctAnswer) {
-
-            setrightQuestions(rightQuestions + 1)
-            toast.success("Resposta correta!",{
+        if (!quizStarted) {
+            setQuizStarted(true);
+        }
+        if (selectedOption === null || selectedOption === undefined) {
+            toast.error("Por favor, selecione uma opção antes de avançar!", {
                 position: "top-center",
-
-            })
-        } else {
-            toast.error("Resposta incorreta!",{
-                position: "top-center",
-
             });
+            return; 
         }
 
+        const currentQues = questions[currentQuestion];
+        if (selectedOption === currentQues.correctAnswer) {
+            setRightQuestions(rightQuestions + 1);
+            toast.success("Resposta correta!", {
+                position: "top-center",
+            });
+        } else {
+            toast.error("Resposta incorreta!", {
+                position: "top-center",
+            });
+        }
+        const total = currentQuestion + 1;
         if (currentQuestion < questions.length - 1) {
             setCurrentQuestion(currentQuestion + 1);
             setSelectedOption(null);
         } else {
-            
+            let ranking = window.localStorage.getItem("ranking");
+            if (ranking == null)
+                ranking = [];
+            else
+                ranking = JSON.parse(ranking);
+            ranking.push({
+                name: userName,
+                points: total
+            })
+            window.localStorage.setItem("ranking", JSON.stringify(ranking));
+            navigate("/ranking")
             toast.success("Quiz Concluído", {
                 position: "top-center",
                 autoClose: 5000,
@@ -114,9 +135,10 @@ export const Quiz = () => {
                 draggable: true,
                 progress: undefined,
                 theme: "colored",
-            })
+            });
         }
     };
+
 
     return (
         <>
@@ -130,24 +152,36 @@ export const Quiz = () => {
             </div>
 
             <div className="quiz-container">
-                {currentQuestion < questions.length && (
-                    <div className="question-container">
-                        <h2>Pergunta {currentQuestion + 1}</h2>
-                        <p>{questions[currentQuestion].question}</p>
-                        <div className="options-container">
-                            {questions[currentQuestion].options.map((option, index) => (
-                                <div
-                                    key={index}
-                                    className={`option ${selectedOption === option ? "selected" : ""}`}
-                                    onClick={() => handleOptionSelect(option)}
-                                >
-                                    {option}
-                                </div>
-                            ))}
-                        </div>
-                        <button onClick={handleNextQuestion}>Próxima Pergunta</button>
+                {!quizStarted ? (
+                    <div className="start-quiz">
+                        <input
+                            type="text"
+                            placeholder="Digite seu nome"
+                            value={userName}
+                            onChange={(e) => setUserName(e.target.value)}
+                        />
+                        <button onClick={() => setQuizStarted(true)}>Começar o Quiz</button>
                     </div>
-                )}
+                ) :
+                    currentQuestion < questions.length && (
+                        <div className="question-container">
+                            <h2>Pergunta {currentQuestion + 1}</h2>
+                            <p>{questions[currentQuestion].question}</p>
+                            <div className="options-container">
+                                {questions[currentQuestion].options.map((option, index) => (
+                                    <div
+                                        key={index}
+                                        className={`option ${selectedOption === option ? "selected" : ""}`}
+                                        onClick={() => handleOptionSelect(option)}
+                                    >
+                                        {option}
+                                    </div>
+                                ))}
+                            </div>
+                            <button onClick={handleNextQuestion}>Próxima Pergunta</button>
+                        </div>
+                    )
+                }
             </div>
         </>
     );
