@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Produtos</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Cadastro de Produtos - Array JS</h1>
+        <form id="form">
+            <label for="">Nome do Produto:</label><br>
+            <input type="text" placeholder="Nome do Produto" name="inp_produ" id="inp_produ"><br>
+            <label for="">Preço do Produto:</label><br>
+            <input type="number" placeholder="Preço do Produto" name="inp_preco" id="inp_preco"><br>
+            <button type="submit">Cadastrar</button>
+        </form>
+
+        <table id="table">
+            <thead>
+                <tr>
+                    <th>Nome do Produto</th>
+                    <th>Preço do Produto</th>
+                    <th>Ações</th>
+                </tr>
+                <tr>
+                    <td>45</td>
+                    <td>15</td>
+                    <td><button onclick="remover(this.parentNode.parentNode)">Remover</button></td>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+    <script src="./script.js"></script>
+</body>
+
+</html>
