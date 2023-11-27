@@ -1,0 +1,52 @@
+body {
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    background-image: url('https://falandodebeleza.files.wordpress.com/2013/09/blush-vult1.jpg');
+    background-size: auto;    
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#container {
+    width: 800px;
+    margin: 0 auto;
+}
+
+h1{
+    text-align: center;
+    color: #DE3163;
+}
+
+input{
+    width: 230px;
+    height: 40px;
+    font-size: 16px;
+}
+
+table {
+   width :100%;
+   border-collapse : collapse; 
+   margin-top :20px; 
+}
+table , th , td { 
+     border :1 px solid #ddd ; 
+}
+th , td { 
+     padding :8 px ; 
+     text-align : left ; 
+} 
+
+tr {background-color:#f2f2f2;}
+
+tr{  
+color:#807c7c;  
+background-color:f2f2fbe;  
+} 
+
+button{   
+width :120 px ;   
+height :40 px ;   
+margin :5% ;   
+font-size :18 px ;
+border-radius :5 px ;
+}

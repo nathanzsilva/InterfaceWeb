@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Tarefas</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container-body">
+        <h1>Cadastro de Tarefas</h1>
+        <form id="form">
+            <label for="">Nome da tarefa:</label><br>
+            <input type="text" placeholder="Nome da tarefa" name="inp_nome" id="inp_nome"><br>
+            <label for="">Descrição da tarefa:</label><br>
+            <textarea type="number" placeholder="Descrição do Produto" name="inp_descricao"
+                id="inp_descricao"></textarea><br>
+            <label for="inp_data_vencimento">Data de Vencimento:</label><br>
+            <input type="date" name="inp_data_vencimento" id="inp_data_vencimento"><br>
+            <label for="inp_prioridade">Prioridade:</label><br>
+            <select name="inp_prioridade" id="inp_prioridade">
+                <option value="alta">Alta</option>
+                <option value="media">Média</option>
+                <option value="baixa">Baixa</option>
+            </select><br>
+            <label for="inp_status">Status:</label><br>
+            <select name="inp_status" id="inp_status">
+                <option value="pendente">Pendente</option>
+                <option value="em_andamento">Em Andamento</option>
+                <option value="concluida">Concluída</option>
+            </select><br>
+            <button type="submit">Cadastrar</button>
+        </form>
+
+        <table id="table">
+            <thead>
+                <tr>
+                    <th>Nome da Tarefa</th>
+                    <th>Descrição</th>
+                    <th>Data de Vencimento</th>
+                    <th>Prazo</th>
+                    <th>Prioridade</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+                <tr>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Editar tarefa</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formularioModal">
+                        <div class="mb-3">
+                            <label for="modal_nome_tarefa" class="form-label">Nome da Tarefa:</label>
+                            <input type="text" class="form-control" id="modal_nome_tarefa" name="modal_nome_tarefa"
+                                required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="modal_descricao" class="form-label">Descrição da Tarefa:</label>
+                            <textarea class="form-control" id="modal_descricao" name="modal_descricao"></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="modal_data_vencimento" class="form-label">Data de Vencimento:</label>
+                            <input type="date" class="form-control" id="modal_data_vencimento"
+                                name="modal_data_vencimento">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="modal_prioridade" class="form-label">Prioridade:</label>
+                            <select class="form-select" id="modal_prioridade" name="modal_prioridade">
+                                <option value="alta">Alta</option>
+                                <option value="media">Média</option>
+                                <option value="baixa">Baixa</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="modal_status" class="form-label">Status:</label>
+                            <select class="form-select" id="modal_status" name="modal_status">
+                                <option value="pendente">Pendente</option>
+                                <option value="em_andamento">Em Andamento</option>
+                                <option value="concluida">Concluída</option>
+                            </select>
+                        </div>
+
+                        <!-- Adicione mais campos conforme necessário -->
+
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Salvar Mudanças</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+        if (!window.localStorage.getItem("login")) {
+            window.location.href = "./login.html"
+        }
+
+        var form = document.querySelector("#form");
+        var table = document.querySelector("#table");
+        var linhaEditada = '';
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const nomeTarefa = document.querySelector("#inp_nome").value;
+            const descricaoTarefa = document.querySelector("#inp_descricao").value;
+            const dataVencimento = document.querySelector("#inp_data_vencimento").value;
+            const prioridade = document.querySelector("#inp_prioridade").value;
+            const status = document.querySelector("#inp_status").value;
+
+            if (nomeTarefa == '') {
+                alert("Preencha o nome da tarefa, por favor")
+                return;
+            }
+
+            const newRow = table.insertRow(1);
+            const newCell0 = newRow.insertCell(0);
+            const newCell1 = newRow.insertCell(1);
+            const newCell2 = newRow.insertCell(2);
+            const newCell3 = newRow.insertCell(3);
+            const newCell4 = newRow.insertCell(4);
+            const newCell5 = newRow.insertCell(5);
+            const newCell6 = newRow.insertCell(6);
+
+            let nomeTarefaText = document.createTextNode(nomeTarefa);
+            let descricaoText = document.createTextNode(descricaoTarefa);
+            let dataVencimentoText = document.createTextNode(formatarData(dataVencimento));
+            let prazoText = document.createTextNode(calcularPrazo(dataVencimento));
+            let prioridadeText = document.createTextNode(formatarDescricaoPrioridade(prioridade));
+            let statusText = document.createTextNode(formatarDescricaoStatus(status));
+
+            let action = document.createElement("button");
+            action.classList.add("btn-remover");
+            action.innerText = "Remover";
+            action.setAttribute("onclick", "remover(this.parentNode.parentNode)");
+
+            let action2 = document.createElement("button");
+            action2.setAttribute("type", "button");
+            action2.classList.add("btn-editar");
+            action2.setAttribute("data-bs-toggle", "modal");
+            action2.setAttribute("data-bs-target", "#exampleModal");
+            action2.innerText = "Editar";
+            action2.addEventListener("click", function () {
+                linhaEditada = this.parentNode.parentNode;
+                preencherFormularioModal();
+            });
+
+            newCell0.appendChild(nomeTarefaText);
+            newCell1.appendChild(descricaoText);
+            newCell2.appendChild(dataVencimentoText);
+            newCell3.appendChild(prazoText);
+            newCell4.appendChild(prioridadeText);
+            newCell5.appendChild(statusText);
+            newCell6.appendChild(action);
+            newCell6.appendChild(action2);
+        });
+        function formatarData(data) {
+            const date = new Date(data);
+            return `${date.getDate()}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getFullYear()}`
+        }
+        function calcularPrazo(dataVencimento) {
+            const dataVencimentoObj = new Date(dataVencimento);
+
+            const dataAtual = new Date();
+
+            const diferencaEmMilissegundos = dataVencimentoObj - dataAtual;
+
+            //Math.ceil arrendonda para cima
+            const diferencaEmDias = Math.ceil(diferencaEmMilissegundos / (1000 * 60 * 60 * 24));
+
+            return diferencaEmDias > 0 ? `${diferencaEmDias} dias restantes` : "Tarefa vencida";
+        }
+        function formatarDescricaoPrioridade(valor) {
+            switch (valor) {
+                case "alta":
+                    return "Alta";
+                case "media":
+                    return "Média";
+                case "baixa":
+                    return "Baixa";
+                default:
+                    return "Desconhecida";
+            }
+        }
+
+        function formatarDescricaoStatus(valor) {
+            switch (valor) {
+                case "pendente":
+                    return "Pendente";
+                case "em_andamento":
+                    return "Em Andamento";
+                case "concluida":
+                    return "Concluída";
+                default:
+                    return "Desconhecida";
+            }
+        }
+        function remover(linha) {
+            linha.parentNode.removeChild(linha)
+        }
+        function preencherFormularioModal() {
+
+            let nomeTarefaAtual = linhaEditada.cells[0].innerText;
+            let descricaoAtual = linhaEditada.cells[1].innerText;
+            let dataVencimentoAtual = linhaEditada.cells[2].innerText;
+            let prioridadeAtual = linhaEditada.cells[4].innerText;
+            let statusAtual = linhaEditada.cells[5].innerText;
+
+            document.getElementById("modal_nome_tarefa").value = nomeTarefaAtual;
+            document.getElementById("modal_descricao").value = descricaoAtual;
+            document.getElementById("modal_data_vencimento").value = desformatarData(dataVencimentoAtual);
+            document.getElementById("modal_prioridade").value = desformatarPrioridade(prioridadeAtual);
+            document.getElementById("modal_status").value = desformatarStatus(statusAtual);
+        }
+        function desformatarData(dataFormatada) {
+            const partesData = dataFormatada.split('/');
+            return `${partesData[2]}-${partesData[1]}-${partesData[0]}`;
+        }
+
+        function desformatarPrioridade(prioridadeFormatada) {
+            switch (prioridadeFormatada) {
+                case "Alta":
+                    return "alta";
+                case "Média":
+                    return "media";
+                case "Baixa":
+                    return "baixa";
+            }
+        }
+        function desformatarStatus(statusFormatado) {
+            switch (statusFormatado) {
+                case "Pendente":
+                    return "pendente";
+                case "Em Andamento":
+                    return "em_andamento";
+                case "Concluída":
+                    return "concluida";
+            }
+        }
+        document.getElementById("formularioModal").addEventListener("submit", function (e) {
+            e.preventDefault();
+            editarLinha();
+        })
+        function editarLinha() {
+            linhaEditada.cells[0].innerText = document.getElementById("modal_nome_tarefa").value;
+            linhaEditada.cells[1].innerText = document.getElementById("modal_descricao").value;
+            linhaEditada.cells[2].innerText = formatarData(document.getElementById("modal_data_vencimento").value);
+            linhaEditada.cells[3].innerText = calcularPrazo(document.getElementById("modal_data_vencimento").value);            
+            linhaEditada.cells[4].innerText = formatarDescricaoPrioridade(document.getElementById("modal_prioridade").value);
+            linhaEditada.cells[5].innerText = formatarDescricaoStatus(document.getElementById("modal_status").value);
+        }
+    </script>
+</body>
+
+</html>

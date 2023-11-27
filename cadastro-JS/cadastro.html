@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container-body">
+        <h1>Login</h1>
+        <form id="form">
+            <label for="">Usuário:</label><br>
+            <input type="text" placeholder="Usuário" name="inp_usuario" id="inp_usuario"><br>
+            <label for="">Senha:</label><br>
+            <input type="password" placeholder="Senha" name="inp_senha" id="inp_senha"><br>
+            <label for="">Confirme a senha:</label><br>
+            <input type="password" placeholder="Confirme a senha" name="inp_confsenha" id="inp_confsenha"><br>
+            <button type="submit">Cadastrar</button>
+        </form>
+        <a href="./login.html">Entrar</a>
+
+    </div>
+    <script>
+        var form = document.querySelector("#form");
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const usuario = document.querySelector("#inp_usuario").value;
+            if (usuario == '') {
+                alert("Preencha o usuário, por favor");
+                return;
+            }
+            const senha = document.querySelector("#inp_senha").value;
+            const confsenha = document.querySelector("#inp_confsenha").value;
+            if (senha == '') {
+                alert("Preencha a senha, por favor");
+                return;
+            }
+            if (confsenha == '') {
+                alert("Preencha a confirmação de senha, por favor");
+                return;
+            }
+            if (senha === confsenha) {
+                const user = {
+                    usuario: usuario,
+                    senha: senha
+                }
+                const usuarios = window.localStorage.getItem("usuarios") ? JSON.parse(window.localStorage.getItem("usuarios")) : [];
+                if(usuarios.find(x => x.usuario === user.usuario)){
+                    alert("Este usuário já está cadastrado.")
+                    return;
+                }
+                usuarios.push(user);
+
+                window.localStorage.setItem("usuarios", JSON.stringify(usuarios))
+
+                window.localStorage.setItem("login", user.usuario);
+                window.location.href = "./index.html"
+
+            }
+            else {
+                alert("As senhas nao coincidem")
+            }
+        })
+    </script>
+</body>
+
+</html>
