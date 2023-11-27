@@ -16,7 +16,7 @@ body {
 .container-body {
     margin: 10%;
     padding: 3vh 3vw;
-    width: 70%;
+    width: 80%;
     max-width: 700px;
     background-color: rgb(251, 191, 253);
     display: flex;
@@ -124,4 +124,15 @@ tbody tr:hover {
 
 .btn-editar:hover {
     background-color: #ffc21a;
+}
+
+.btn-deslogar{
+    color: white;
+    background-image: radial-gradient(rgb(255, 94, 120), rgb(250, 150, 167));
+    background-color: rgb(255, 118, 141);
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    align-self: flex-end;
+    margin-right: 30px;
 }
