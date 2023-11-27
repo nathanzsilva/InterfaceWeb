@@ -16,6 +16,8 @@
 <body>
     <div class="container-body">
         <h1>Cadastro de Tarefas</h1>
+        <button class="btn-deslogar" onclick="deslogar()">Deslogar</button>
+
         <form id="form">
             <label for="">Nome da tarefa:</label><br>
             <input type="text" placeholder="Nome da tarefa" name="inp_nome" id="inp_nome"><br>
@@ -42,6 +44,7 @@
         <table id="table">
             <thead>
                 <tr>
+                    <th>Nome</th>
                     <th>Nome da Tarefa</th>
                     <th>Descrição</th>
                     <th>Data de Vencimento</th>
@@ -125,6 +128,7 @@
         form.addEventListener("submit", (e) => {
             e.preventDefault();
 
+            const nome = window.localStorage.getItem("login");
             const nomeTarefa = document.querySelector("#inp_nome").value;
             const descricaoTarefa = document.querySelector("#inp_descricao").value;
             const dataVencimento = document.querySelector("#inp_data_vencimento").value;
@@ -144,7 +148,9 @@
             const newCell4 = newRow.insertCell(4);
             const newCell5 = newRow.insertCell(5);
             const newCell6 = newRow.insertCell(6);
+            const newCell7 = newRow.insertCell(7);
 
+            let nomeText = document.createTextNode(nome); // Adicionando o nome do usuário
             let nomeTarefaText = document.createTextNode(nomeTarefa);
             let descricaoText = document.createTextNode(descricaoTarefa);
             let dataVencimentoText = document.createTextNode(formatarData(dataVencimento));
@@ -168,18 +174,19 @@
                 preencherFormularioModal();
             });
 
-            newCell0.appendChild(nomeTarefaText);
-            newCell1.appendChild(descricaoText);
-            newCell2.appendChild(dataVencimentoText);
-            newCell3.appendChild(prazoText);
-            newCell4.appendChild(prioridadeText);
-            newCell5.appendChild(statusText);
-            newCell6.appendChild(action);
-            newCell6.appendChild(action2);
+            newCell0.appendChild(nomeText);
+            newCell1.appendChild(nomeTarefaText);
+            newCell2.appendChild(descricaoText);
+            newCell3.appendChild(dataVencimentoText);
+            newCell4.appendChild(prazoText);
+            newCell5.appendChild(prioridadeText);
+            newCell6.appendChild(statusText);
+            newCell7.appendChild(action);
+            newCell7.appendChild(action2);
         });
         function formatarData(data) {
             const date = new Date(data);
-            return `${date.getDate()}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getFullYear()}`
+            return `${date.getDate() + 1}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getFullYear()}`
         }
         function calcularPrazo(dataVencimento) {
             const dataVencimentoObj = new Date(dataVencimento);
@@ -223,11 +230,11 @@
         }
         function preencherFormularioModal() {
 
-            let nomeTarefaAtual = linhaEditada.cells[0].innerText;
-            let descricaoAtual = linhaEditada.cells[1].innerText;
-            let dataVencimentoAtual = linhaEditada.cells[2].innerText;
-            let prioridadeAtual = linhaEditada.cells[4].innerText;
-            let statusAtual = linhaEditada.cells[5].innerText;
+            let nomeTarefaAtual = linhaEditada.cells[1].innerText;
+            let descricaoAtual = linhaEditada.cells[2].innerText;
+            let dataVencimentoAtual = linhaEditada.cells[3].innerText;
+            let prioridadeAtual = linhaEditada.cells[5].innerText;
+            let statusAtual = linhaEditada.cells[6].innerText;
 
             document.getElementById("modal_nome_tarefa").value = nomeTarefaAtual;
             document.getElementById("modal_descricao").value = descricaoAtual;
@@ -265,12 +272,16 @@
             editarLinha();
         })
         function editarLinha() {
-            linhaEditada.cells[0].innerText = document.getElementById("modal_nome_tarefa").value;
-            linhaEditada.cells[1].innerText = document.getElementById("modal_descricao").value;
-            linhaEditada.cells[2].innerText = formatarData(document.getElementById("modal_data_vencimento").value);
-            linhaEditada.cells[3].innerText = calcularPrazo(document.getElementById("modal_data_vencimento").value);            
-            linhaEditada.cells[4].innerText = formatarDescricaoPrioridade(document.getElementById("modal_prioridade").value);
-            linhaEditada.cells[5].innerText = formatarDescricaoStatus(document.getElementById("modal_status").value);
+            linhaEditada.cells[1].innerText = document.getElementById("modal_nome_tarefa").value;
+            linhaEditada.cells[2].innerText = document.getElementById("modal_descricao").value;
+            linhaEditada.cells[3].innerText = formatarData(document.getElementById("modal_data_vencimento").value);
+            linhaEditada.cells[4].innerText = calcularPrazo(document.getElementById("modal_data_vencimento").value);
+            linhaEditada.cells[5].innerText = formatarDescricaoPrioridade(document.getElementById("modal_prioridade").value);
+            linhaEditada.cells[6].innerText = formatarDescricaoStatus(document.getElementById("modal_status").value);
+        }
+        function deslogar(){
+            window.localStorage.removeItem("login");
+            window.location.href = "./login.html"
         }
     </script>
 </body>
