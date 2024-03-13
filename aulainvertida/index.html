@@ -149,6 +149,7 @@
         </div>
 
         <h2>Qual vai ser o rolê?</h2>
+        <button onclick="chamarApi()">Chamar api</button>
 
         <div class="locais" id="locais"> </div>
 
@@ -161,6 +162,11 @@
     </footer>
     <script src="./script.js"></script>
     <script>
+        async function chamarApi(){
+            const response = await fetch("http://34.228.222.98/webApi/Jack/ObterUsuariosFieb")
+            const data = await response.json();
+            console.log(data)
+        }
         function verCasa(batata) {
             var img = batata.querySelector("img").src
             var titulo = batata.querySelector("h3").innerText
